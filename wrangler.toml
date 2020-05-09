@@ -1,0 +1,7 @@
+name = "weather-api"
+type = "webpack"
+account_id = "c8c30db3dddc4ad31065d336368c7905"
+workers_dev = true
+route = ""
+zone_id = ""
+webpack_config = "webpack.config.js"

@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "weather-api",
+  "version": "1.0.0",
+  "description": "US Weather API Middleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write '**/*.{js,css,json,md}'"
+  },
+  "author": "Chandler Lofland <chandlerl14@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "node-fetch": "^2.6.0",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {}
+}
