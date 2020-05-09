@@ -1,4 +1,6 @@
-var fetch = require('node-fetch')
+const fetch = require('node-fetch')
+const DEFAULT_HEADERS = {'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'User-Agent': 'node-fetch'};
+
 
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
@@ -16,11 +18,10 @@ async function handleRequest(request) {
     }
     if (contentType.includes('application/json')) {
       let returnData = await getWeatherData(body)
-      return new Response(returnData, {
+      return new Response(JSON.stringify(returnData), {
         status: 200,
       })
     } else {
-      // reject it
       return new Response('Bad Request', {
         status: 400,
       })
@@ -30,10 +31,12 @@ async function handleRequest(request) {
 
 async function getWeatherData(data) {
   const getForecastURL = 'https://api.weather.gov/points/' + data.lat+ ',' + data.lng;
-  let latlngResp = await fetch(getForecastURL, {method: 'GET'});
-  const forecastURL = await latlngResp.text();
-  console.log(forecastURL);
-  return forecastURL;
-  // let forecastResp = await fetch(forecastURL);
-  // return forecastResp.json();
+  // console.log(getForecastURL);
+  let latlngResp = await fetch(getForecastURL, {method: 'GET', headers: DEFAULT_HEADERS});
+  const forecastNode = await latlngResp.json();
+  const forecastURL = forecastNode.properties.forecast;
+  // console.log(forecastURL);
+  let forecastResp = await fetch(forecastURL, {method: 'GET', headers: DEFAULT_HEADERS});
+  let returnForecast = await forecastResp.json();
+  return returnForecast;
 }
