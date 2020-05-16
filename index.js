@@ -21,12 +21,25 @@ async function handleRequest(request) {
       })
     }
     if (contentType.includes('application/json')) {
-      let returnData = await getWeatherData(body)
-      return new Response(JSON.stringify(returnData), {
-        status: 200,
-      })
+      let returnData = null
+      try {
+        returnData = await getWeatherData(body)
+      } catch (err) {
+        return new Response(err.stack || err, {
+          status: 500,
+        })
+      }
+      if (returnData !== null) {
+        return new Response(JSON.stringify(returnData), {
+          status: 200,
+        })
+      } else {
+        return new Response('{}', {
+          status: 500,
+        })
+      }
     } else {
-      return new Response('Bad Request', {
+      return new Response(JSON.stringify({ error: 'Bad Request' }), {
         status: 400,
       })
     }
