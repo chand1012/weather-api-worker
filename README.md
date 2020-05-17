@@ -17,7 +17,7 @@ req = requests.post("https://weather-api.chand1012.workers.dev/", headers={'cont
 print(req.json())
 ```
 
-This will return the forecasts for the next 7 days for the given forecast. If you want a simple python class with functions to work with this, here is the snippet of code I use for my [Discord Weather Bot]():
+This will return the forecasts for the next 7 days for the given forecast. If you want a simple python class with functions to work with this, here is the snippet of code I use for my [Discord Weather Bot](https://github.com/chand1012/discord-weather-bot):
 
 ```Python
 class WorkerWeatherSearch():
