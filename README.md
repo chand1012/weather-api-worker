@@ -4,7 +4,9 @@ This was a simple project meant for me to teach myself how to use a serverless s
 
 # To use
 
-Simply submit a `POST` request to the url at `https://weather-api.chand1012.workers.dev/`. Here is a Python example:
+Simply submit a `POST` request to the url at `https://weather-api.chand1012.workers.dev/`. Here is a cURL example:
+
+`curl -XPOST -H "Content-type: application/json" -d '{"lat": 38.9, "lng": -77}' 'https://weather-api.chand1012.workers.dev'`
 
 ```Python
 import requests
@@ -22,7 +24,7 @@ This will return the forecasts for the next 7 days for the given forecast. If yo
 ```Python
 class WorkerWeatherSearch():
     def __init__(self):
-        self.lat=41.08
+        self.lat = 41.08
         self.lng = -81.51
         self.base_url = "https://weather-api.chand1012.workers.dev"
         self.json = None
@@ -36,4 +38,3 @@ class WorkerWeatherSearch():
         self.forecasts = self.json['properties']['periods']
         return self.json
 ```
-
