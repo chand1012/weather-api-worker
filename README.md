@@ -8,6 +8,8 @@ Simply submit a `POST` request to the url at `https://weather-api.chand1012.work
 
 `curl -XPOST -H "Content-type: application/json" -d '{"lat": 38.9, "lng": -77}' 'https://weather-api.chand1012.workers.dev'`
 
+Python Example:
+
 ```Python
 import requests
 
