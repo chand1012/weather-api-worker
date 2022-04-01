@@ -11,7 +11,7 @@
   "author": "Chandler Lofland <chandlerl14@outlook.com>",
   "license": "MIT",
   "devDependencies": {
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.2.3",
     "prettier": "^2.3.0"
   },
   "dependencies": {}
